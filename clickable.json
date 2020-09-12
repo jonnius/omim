@@ -1,0 +1,29 @@
+{
+  "builder": "custom",
+  "build": "${ROOT}/tools/unix/build_omim.sh -r -p ${BUILD_DIR} -j",
+  "install_dir": "${BUILD_DIR}/omim-build-release",
+  "dependencies_ppa": [
+    "ppa:janisozaur/cmake-update",
+    "ppa:ubuntu-toolchain-r/test"
+  ],
+  "dependencies_target": [
+    "qtbase5-dev",
+    "libc++-dev",
+    "libboost-iostreams-dev",
+    "libglu1-mesa-dev",
+    "libsqlite3-dev"
+  ],
+  "dependencies_host": [
+    "g++-9",
+    "cmake",
+    "clang"
+  ],
+  "image_setup": {
+    "run": ["update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 40 --slave /usr/bin/g++ g++ /usr/bin/g++-9"]
+  },
+  "install_data": {
+    "${ROOT}/manifest.json": "${INSTALL_DIR}",
+    "${ROOT}/omim.desktop": "${INSTALL_DIR}",
+    "${ROOT}/omim.apparmor": "${INSTALL_DIR}"
+  }
+}

@@ -115,6 +115,8 @@ else
   PROCESSES=$(nproc)
 fi
 
+PROCESSES=4
+
 build()
 {
   CONF=$1
